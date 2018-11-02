@@ -9,3 +9,7 @@
 
 # Undo-tree save-files
 *.~undo-tree
+
+# Repository keys and archive contents
+elpa/archives
+elpa/gnupg
