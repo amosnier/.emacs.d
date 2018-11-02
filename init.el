@@ -41,6 +41,9 @@
   (flyspell-mode))
 (add-hook 'text-mode-hook 'configure-text-mode)
 
+;; Activate global company-mode
+(add-hook 'after-init-hook 'global-company-mode)
+
 (provide 'init)
 
 ;;; init.el ends here
