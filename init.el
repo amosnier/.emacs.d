@@ -5,6 +5,9 @@
 
 ;;; Code:
 
+;; No splash screen
+(setq inhibit-splash-screen t)
+
 ;; More space for text
 (menu-bar-mode 0)
 (tool-bar-mode 0)
@@ -27,6 +30,12 @@
 
 ;; Git commit mode
 (require 'git-commit)
+
+;; Better text mode
+(defun configure-text-mode ()
+  (turn-on-auto-fill)
+  (flyspell-mode))
+(add-hook 'text-mode-hook 'configure-text-mode)
 
 (provide 'init)
 
