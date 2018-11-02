@@ -12,7 +12,14 @@
 ;; Use MELPA
 (require 'package)
 (add-to-list 'package-archives
-             '("MELPA Stable" . "https://stable.melpa.org/packages/") t)
+             '("melpa" . "https://melpa.org/packages/") t)
+
+;; Low contrast theme
+(load-theme 'zenburn t)
+
+;; Better looking mode line
+(require 'powerline)
+(powerline-default-theme)
 
 ;; Activate flycheck globally.
 (require 'flycheck)
