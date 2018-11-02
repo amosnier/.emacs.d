@@ -28,11 +28,15 @@
 (require 'flycheck)
 (global-flycheck-mode)
 
+;; Activate flyspell mode for comments and strings
+(flyspell-prog-mode)
+
 ;; Git commit mode
 (require 'git-commit)
 
-;; Better text mode
+;; Text mode hook
 (defun configure-text-mode ()
+  "This function improves the text mode."
   (turn-on-auto-fill)
   (flyspell-mode))
 (add-hook 'text-mode-hook 'configure-text-mode)
