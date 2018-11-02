@@ -25,6 +25,9 @@
 (require 'flycheck)
 (global-flycheck-mode)
 
+;; Git commit mode
+(require 'git-commit)
+
 (provide 'init)
 
 ;;; init.el ends here
