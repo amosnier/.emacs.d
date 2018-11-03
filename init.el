@@ -78,6 +78,13 @@
 ;; Activate Ivy mode
 (ivy-mode 1)
 
+;; Keyboard shortcuts
+(global-set-key [f7] 'compile)
+(global-set-key [f8] 'recompile)
+(global-set-key [f9] 'previous-error)
+(global-set-key [f10] 'next-error)
+(global-set-key [f12] 'kill-this-buffer)
+
 (provide 'init)
 
 ;;; init.el ends here
