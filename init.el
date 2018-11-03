@@ -5,6 +5,12 @@
 
 ;;; Code:
 
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 ;; No splash screen
 (setq inhibit-splash-screen t)
 
@@ -15,7 +21,7 @@
 ;; Use MELPA
 (require 'package)
 (add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/") t)
+             '("melpa stable" . "https://stable.melpa.org/packages/") t)
 
 ;; Low contrast theme
 (load-theme 'zenburn t)
@@ -35,11 +41,34 @@
 (require 'git-commit)
 
 ;; Text mode hook
-(defun configure-text-mode ()
-  "This function improves the text mode."
+(defun my-text-mode-hook ()
+  "Improve the text mode."
   (turn-on-auto-fill)
-  (flyspell-mode))
-(add-hook 'text-mode-hook 'configure-text-mode)
+  (flyspell-mode)
+  (add-to-list (make-local-variable 'company-backends) 'company-ispell))
+(add-hook 'text-mode-hook 'my-text-mode-hook)
+
+;; Change ispell language to English
+(defun my-change-language-to-english ()
+  "Change the language to English for Ispell."
+  (interactive)
+  (ispell-change-dictionary "en")
+  (defvar company-ispell-dictionary)
+  (setq company-ispell-dictionary (file-truename "~/.emacs.d/dict/british-english")))
+
+(defun my-change-language-to-french ()
+  "Change the language to French for Ispell."
+  (interactive)
+  (ispell-change-dictionary "fr")
+  (defvar company-ispell-dictionary)
+  (setq company-ispell-dictionary (file-truename "~/.emacs.d/dict/french")))
+
+(defun my-change-language-to-swedish ()
+  "Change the language the Swedish for Ispell."
+  (interactive)
+  (ispell-change-dictionary "sv")
+  (defvar company-ispell-dictionary)
+  (setq company-ispell-dictionary (file-truename "~/.emacs.d/dict/swedish")))
 
 ;; Activate global company-mode
 (add-hook 'after-init-hook 'global-company-mode)
