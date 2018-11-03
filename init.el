@@ -76,10 +76,13 @@
   (setq company-ispell-dictionary (file-truename "~/.emacs.d/dict/swedish")))
 
 ;; Activate Ivy mode
+(require 'ivy)
 (ivy-mode 1)
+(setq ivy-count-format "(%d/%d) ")
 
 ;; Keyboard shortcuts
 (global-set-key "\C-s" 'swiper)
+(global-set-key (kbd "M-x") 'counsel-M-x)
 (global-set-key [f7] 'compile)
 (global-set-key [f8] 'recompile)
 (global-set-key [f9] 'previous-error)
