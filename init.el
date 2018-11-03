@@ -79,6 +79,7 @@
 (ivy-mode 1)
 
 ;; Keyboard shortcuts
+(global-set-key "\C-s" 'swiper)
 (global-set-key [f7] 'compile)
 (global-set-key [f8] 'recompile)
 (global-set-key [f9] 'previous-error)
