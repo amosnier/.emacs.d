@@ -86,6 +86,17 @@
 ;; Activate elpy
 (elpy-enable)
 
+;; Smart tabs
+(smart-tabs-insinuate 'c 'c++)
+
+;; C and C++ settings
+(require 'cc-vars)
+(setq c-default-style "linux")
+
+;; C++ settings
+(add-hook 'c++-mode-hook (lambda () (setq comment-start "/* " comment-end   " */")))
+(add-hook 'c++-mode-hook (lambda () (c-set-offset 'innamespace [0])))
+
 ;; Ivy keyboard shortcuts
 (global-set-key "\C-s" 'swiper)
 (global-set-key (kbd "C-c C-r") 'ivy-resume)
