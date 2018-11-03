@@ -64,7 +64,7 @@
   (setq company-ispell-dictionary (file-truename "~/.emacs.d/dict/french")))
 
 (defun my-change-language-to-swedish ()
-  "Change the language the Swedish for Ispell."
+  "Change the language to Swedish for Ispell."
   (interactive)
   (ispell-change-dictionary "sv")
   (defvar company-ispell-dictionary)
@@ -72,6 +72,9 @@
 
 ;; Activate global company-mode
 (add-hook 'after-init-hook 'global-company-mode)
+
+;; Activate Ivy mode
+(ivy-mode 1)
 
 (provide 'init)
 
