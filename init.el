@@ -83,6 +83,9 @@
 (setq ivy-use-virtual-buffers t)
 (setq enable-recursive-minibuffers t)
 
+;; Activate elpy
+(elpy-enable)
+
 ;; Ivy keyboard shortcuts
 (global-set-key "\C-s" 'swiper)
 (global-set-key (kbd "C-c C-r") 'ivy-resume)
