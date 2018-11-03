@@ -48,6 +48,11 @@
   (add-to-list (make-local-variable 'company-backends) 'company-ispell))
 (add-hook 'text-mode-hook 'my-text-mode-hook)
 
+;; Activate global company-mode
+(require 'company)
+(add-hook 'after-init-hook 'global-company-mode)
+(setq company-show-numbers t)
+
 ;; Change ispell language to English
 (defun my-change-language-to-english ()
   "Change the language to English for Ispell."
@@ -69,9 +74,6 @@
   (ispell-change-dictionary "sv")
   (defvar company-ispell-dictionary)
   (setq company-ispell-dictionary (file-truename "~/.emacs.d/dict/swedish")))
-
-;; Activate global company-mode
-(add-hook 'after-init-hook 'global-company-mode)
 
 ;; Activate Ivy mode
 (ivy-mode 1)
