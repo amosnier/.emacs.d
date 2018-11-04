@@ -106,6 +106,12 @@
 (eval-after-load 'flycheck
   '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
 
+;; Rtags (for finding symbols only)
+(require 'rtags)
+(add-hook 'c-mode-hook 'rtags-start-process-unless-running)
+(add-hook 'c++-mode-hook 'rtags-start-process-unless-running)
+(setq rtags-display-result-backend 'ivy)
+
 ;; Ivy keyboard shortcuts
 (global-set-key "\C-s" 'swiper)
 (global-set-key (kbd "C-c C-r") 'ivy-resume)
@@ -123,6 +129,11 @@
 (global-set-key (kbd "C-c k") 'counsel-ag)
 (global-set-key (kbd "C-x l") 'counsel-locate)
 (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
+
+;; Rtags keyboard shortcuts
+(require 'cc-mode)
+(define-key c-mode-base-map (kbd "M-.") 'rtags-find-symbol-at-point)
+(define-key c-mode-base-map (kbd "M-?") 'rtags-find-references-at-point)
 
 ;; General keyboard shortcuts
 (global-set-key [f7] 'compile)
