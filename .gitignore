@@ -13,3 +13,6 @@
 # Repository keys and archive contents
 elpa/archives
 elpa/gnupg
+
+# Binaries built by irony-mode
+irony

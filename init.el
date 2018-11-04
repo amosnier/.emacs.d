@@ -97,6 +97,15 @@
 (add-hook 'c++-mode-hook (lambda () (setq comment-start "/* " comment-end   " */")))
 (add-hook 'c++-mode-hook (lambda () (c-set-offset 'innamespace [0])))
 
+;; Irony
+(add-hook 'c++-mode-hook 'irony-mode)
+(add-hook 'c-mode-hook 'irony-mode)
+(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+(eval-after-load 'company
+  '(add-to-list 'company-backends 'company-irony))
+(eval-after-load 'flycheck
+  '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
+
 ;; Ivy keyboard shortcuts
 (global-set-key "\C-s" 'swiper)
 (global-set-key (kbd "C-c C-r") 'ivy-resume)
