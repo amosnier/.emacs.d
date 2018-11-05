@@ -75,6 +75,12 @@
   (defvar company-ispell-dictionary)
   (setq company-ispell-dictionary (file-truename "~/.emacs.d/dict/swedish")))
 
+(defun my-automatic-code-block-confirm-in-org-mode ()
+  "Automatically confirm code block evaluation in org mode."
+  (interactive)
+  (defvar org-confirm-babel-evaluate)
+  (setq org-confirm-babel-evaluate nil))
+
 ;; Activate Ivy mode
 (require 'ivy)
 (ivy-mode 1)

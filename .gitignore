@@ -16,3 +16,7 @@ elpa/gnupg
 
 # Binaries built by irony-mode
 irony
+
+# Various automatically saved files
+bookmarks
+recentf
