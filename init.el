@@ -109,11 +109,11 @@
 (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
 (eval-after-load 'company
   '(add-to-list 'company-backends 'company-irony))
-(eval-after-load 'flycheck
-  '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
 
 ;; Rtags (for finding symbols only)
 (require 'rtags)
+(require 'flycheck-rtags)
+(require 'xref)
 (add-hook 'c-mode-hook 'rtags-start-process-unless-running)
 (add-hook 'c++-mode-hook 'rtags-start-process-unless-running)
 (setq rtags-display-result-backend 'ivy)
@@ -122,6 +122,16 @@
   (interactive)
   (xref-push-marker-stack)
   (rtags-find-symbol-at-point))
+
+;; Detect C/C++ for h files
+(defun c-c++-header ()
+  "Set either 'c-mode' or 'c++-mode', whichever is appropriate for header."
+  (interactive)
+  (let ((c-file (concat (substring (buffer-file-name) 0 -1) "c")))
+    (if (file-exists-p c-file)
+        (c-mode)
+      (c++-mode))))
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c-c++-header))
 
 ;; Ivy keyboard shortcuts
 (global-set-key "\C-s" 'swiper)
