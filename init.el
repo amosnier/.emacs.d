@@ -97,26 +97,6 @@
 (add-hook 'c++-mode-hook (lambda () (setq comment-start "/* " comment-end   " */")))
 (add-hook 'c++-mode-hook (lambda () (c-set-offset 'innamespace [0])))
 
-;; Irony
-(add-hook 'c++-mode-hook 'irony-mode)
-(add-hook 'c-mode-hook 'irony-mode)
-(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
-(eval-after-load 'company
-  '(add-to-list 'company-backends 'company-irony))
-
-;; Rtags (for finding symbols only)
-(require 'rtags)
-(require 'flycheck-rtags)
-(require 'xref)
-(add-hook 'c-mode-hook 'rtags-start-process-unless-running)
-(add-hook 'c++-mode-hook 'rtags-start-process-unless-running)
-(setq rtags-display-result-backend 'ivy)
-(defun my-rtags-find-symbol-at-point ()
-  "Push point marker to global mark ring and find symbol."
-  (interactive)
-  (xref-push-marker-stack)
-  (rtags-find-symbol-at-point))
-
 ;; Detect C/C++ for h files
 (defun c-c++-header ()
   "Set either 'c-mode' or 'c++-mode', whichever is appropriate for header."
@@ -145,13 +125,6 @@
 (global-set-key (kbd "C-x l") 'counsel-locate)
 (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
 
-;; Rtags keyboard shortcuts
-(require 'cc-mode)
-(define-key c-mode-map (kbd "M-.") 'my-rtags-find-symbol-at-point)
-(define-key c-mode-map (kbd "M-?") 'rtags-find-references-at-point)
-(define-key c++-mode-map (kbd "M-.") 'my-rtags-find-symbol-at-point)
-(define-key c++-mode-map (kbd "M-?") 'rtags-find-references-at-point)
-
 ;; General keyboard shortcuts
 (global-set-key [f7] 'compile)
 (global-set-key [f8] 'recompile)
@@ -162,16 +135,3 @@
 (provide 'init)
 
 ;;; init.el ends here
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(zenburn-theme smart-tabs-mode powerline ivy-rtags git-commit flycheck-rtags flycheck-irony elpy counsel company-irony)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
