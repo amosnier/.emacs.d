@@ -41,6 +41,8 @@
   (flyspell-mode)
   (add-to-list (make-local-variable 'company-backends) 'company-ispell))
 (add-hook 'text-mode-hook 'my-text-mode-hook)
+;; Nxml mode is bizarrely based on text mode, but auto-fill is disturbing there.
+(add-hook 'nxml-mode-hook 'turn-off-auto-fill)
 
 ;; Activate global company-mode
 (require 'company)
