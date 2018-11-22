@@ -24,9 +24,9 @@
 (require 'powerline)
 (powerline-default-theme)
 
-;; Activate flycheck globally.
+;; Activate flycheck for elisp.
 (require 'flycheck)
-(global-flycheck-mode)
+(add-hook 'emacs-lisp-mode 'flycheck-mode)
 
 ;; Activate flyspell mode for comments and strings
 (flyspell-prog-mode)
@@ -108,6 +108,13 @@
         (c-mode)
       (c++-mode))))
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c-c++-header))
+
+;; Configure eglot for C and C++
+(require 'eglot)
+(add-to-list 'eglot-server-programs '(c-mode . ("clangd")))
+(add-to-list 'eglot-server-programs '(c++-mode . ("clangd")))
+(add-hook 'c-mode-hook 'eglot-ensure)
+(add-hook 'c++-mode-hook 'eglot-ensure)
 
 ;; Ivy keyboard shortcuts
 (global-set-key "\C-s" 'swiper)
