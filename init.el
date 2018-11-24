@@ -111,8 +111,8 @@
 
 ;; Configure eglot for C and C++
 (require 'eglot)
-(add-to-list 'eglot-server-programs '(c-mode . ("clangd")))
-(add-to-list 'eglot-server-programs '(c++-mode . ("clangd")))
+(add-to-list 'eglot-server-programs '(c-mode . ("ccls")))
+(add-to-list 'eglot-server-programs '(c++-mode . ("ccls")))
 (add-hook 'c-mode-hook 'eglot-ensure)
 (add-hook 'c++-mode-hook 'eglot-ensure)
 
