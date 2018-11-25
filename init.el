@@ -134,6 +134,10 @@
 (global-set-key (kbd "C-x l") 'counsel-locate)
 (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
 
+;; Flymake shortcuts
+(define-key flymake-mode-map (kbd "M-n") 'flymake-goto-next-error)
+(define-key flymake-mode-map (kbd "M-p") 'flymake-goto-prev-error)
+
 ;; General keyboard shortcuts
 (global-set-key [f7] 'compile)
 (global-set-key [f8] 'recompile)
