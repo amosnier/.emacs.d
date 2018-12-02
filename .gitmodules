@@ -1,0 +1,3 @@
+[submodule "github/eglot"]
+	path = github/eglot
+	url = ssh://git@github.com/amosnier/eglot

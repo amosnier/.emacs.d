@@ -110,6 +110,7 @@
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c-c++-header))
 
 ;; Configure eglot for C and C++
+(add-to-list 'load-path "~/.emacs.d/github/eglot/")
 (require 'eglot)
 (add-to-list 'eglot-server-programs '(c-mode . ("ccls")))
 (add-to-list 'eglot-server-programs '(c++-mode . ("ccls")))
@@ -161,7 +162,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(yasnippet-classic-snippets zenburn-theme smart-tabs-mode powerline git-commit flycheck elpy eglot counsel cmake-mode)))
+   '(yasnippet-classic-snippets zenburn-theme smart-tabs-mode powerline git-commit flycheck elpy counsel cmake-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
