@@ -1,3 +1,4 @@
 [submodule "github/eglot"]
 	path = github/eglot
 	url = ssh://git@github.com/amosnier/eglot
+	branch = scratch/issue-173-robustify-fix
