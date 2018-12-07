@@ -13,6 +13,7 @@
 (tool-bar-mode 0)
 
 ;; Use MELPA
+(package-initialize)
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/") t)
