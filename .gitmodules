@@ -1,4 +1,4 @@
 [submodule "github/eglot"]
 	path = github/eglot
-	url = ssh://git@github.com/joaotavora/eglot
+	url = https://github.com/joaotavora/eglot
 	branch = master
