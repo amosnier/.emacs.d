@@ -16,7 +16,7 @@
 (package-initialize)
 (require 'package)
 (add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/") t)
+             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
 ;; Low contrast theme
 (load-theme 'zenburn t)
@@ -26,8 +26,8 @@
 (powerline-default-theme)
 
 ;; Activate flycheck for elisp.
-(require 'flycheck)
-(add-hook 'emacs-lisp-mode 'flycheck-mode)
+(require 'flymake)
+(add-hook 'emacs-lisp-mode 'flymake-mode)
 
 ;; Activate flyspell mode for comments and strings
 (flyspell-prog-mode)
@@ -72,12 +72,6 @@
   (defvar company-ispell-dictionary)
   (setq company-ispell-dictionary (file-truename "~/.emacs.d/dict/swedish")))
 
-(defun my-automatic-code-block-confirm-in-org-mode ()
-  "Automatically confirm code block evaluation in org mode."
-  (interactive)
-  (defvar org-confirm-babel-evaluate)
-  (setq org-confirm-babel-evaluate nil))
-
 ;; Activate Ivy mode
 (require 'ivy)
 (ivy-mode 1)
@@ -85,9 +79,6 @@
 (setq ivy-count-format "(%d/%d) ")
 (setq ivy-use-virtual-buffers t)
 (setq enable-recursive-minibuffers t)
-
-;; Activate elpy
-(elpy-enable)
 
 ;; Smart tabs
 (smart-tabs-insinuate 'c 'c++)
@@ -109,20 +100,6 @@
         (c-mode)
       (c++-mode))))
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c-c++-header))
-
-;; Configure eglot for C and C++
-(require 'eglot)
-(add-to-list 'eglot-server-programs '(c-mode . ("clangd")))
-(add-to-list 'eglot-server-programs '(c++-mode . ("clangd")))
-(add-hook 'c-mode-hook 'eglot-ensure)
-(add-hook 'c++-mode-hook 'eglot-ensure)
-
-;; Configure Yasnippet
-(require 'yasnippet)
-(yas-global-mode 1)
-
-;; Close parentheses
-(electric-pair-mode 1)
 
 ;; Ivy keyboard shortcuts
 (global-set-key "\C-s" 'swiper)
