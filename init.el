@@ -111,7 +111,6 @@
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c-c++-header))
 
 ;; Configure eglot for C and C++
-(add-to-list 'load-path "~/.emacs.d/github/eglot/")
 (require 'eglot)
 (add-to-list 'eglot-server-programs '(c-mode . ("clangd")))
 (add-to-list 'eglot-server-programs '(c++-mode . ("clangd")))
