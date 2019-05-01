@@ -25,7 +25,7 @@
 (require 'powerline)
 (powerline-default-theme)
 
-;; Activate flycheck for elisp.
+;; Activate flymake for elisp.
 (require 'flymake)
 (add-hook 'emacs-lisp-mode 'flymake-mode)
 
@@ -100,6 +100,10 @@
         (c-mode)
       (c++-mode))))
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c-c++-header))
+
+;; HTML settings
+(add-hook 'html-mode-hook (lambda () (setq tab-width 2)))
+(add-hook 'html-mode-hook (lambda () (setq indent-tabs-mode t)))
 
 ;; Ivy keyboard shortcuts
 (global-set-key "\C-s" 'swiper)
