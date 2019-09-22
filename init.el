@@ -16,7 +16,7 @@
 (package-initialize)
 (require 'package)
 (add-to-list 'package-archives
-             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+             '("melpa" . "https://melpa.milkbox.net/packages/"))
 
 ;; Low contrast theme
 (load-theme 'zenburn t)
