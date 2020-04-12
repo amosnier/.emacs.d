@@ -23,3 +23,6 @@ recentf
 
 # Security data
 network-security.data
+
+# Transient history
+transient
